@@ -8,7 +8,7 @@ export default defineConfig(({ command }) => ({
     manifest: true,
     outDir: path.resolve(__dirname, 'public/dist'),
     rollupOptions: {
-      input: 'resources/js/app.js',
+      input: 'resources/js/app.ts',
     },
   },
 
