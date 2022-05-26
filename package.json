@@ -23,6 +23,7 @@
         "vue-loader": "^17.0.0"
     },
     "dependencies": {
-        "typescript": "^4.7.2"
+        "typescript": "^4.7.2",
+        "vue-tsc": "^0.34.16"
     }
 }
