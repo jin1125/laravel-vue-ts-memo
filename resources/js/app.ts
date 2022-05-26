@@ -9,7 +9,15 @@ const appName = window.document.getElementsByTagName('title')[0]?.innerText || '
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: name => import(`./Pages/${name}.vue`),
+    resolve: async name => {
+        if (import.meta.env.DEV) {
+            return await import(`./Pages/${name}.vue`)
+        } else {
+            let pages = import.meta.glob('./Pages/**/*.vue')
+            const importPage = pages[`./Pages/${name}.vue`]
+            return importPage().then(module)
+        }
+    },
     setup({ el, app, props, plugin }) {
         createApp({ render: () => h(app, props) })
             .use(plugin)
