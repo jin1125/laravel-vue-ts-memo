@@ -9,7 +9,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
     <Link
       v-if="$page.props.user"
       :href="route('dashboard')"
-      class="bg-blue text-white p-1 shadow-lg hover:shadow-none"
+      class="bg-blue text-white font-bold p-2 shadow-lg hover:shadow-none"
     >
       Mypage
     </Link>
@@ -17,14 +17,14 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
     <template v-else>
       <Link
         :href="route('login')"
-        class="bg-blue text-white p-1 shadow-lg hover:shadow-none"
+        class="bg-blue text-white font-bold p-2 shadow-lg hover:shadow-none"
       >
         Log in
       </Link>
 
       <Link
         :href="route('register')"
-        class="bg-blue text-white p-1 shadow-lg hover:shadow-none"
+        class="bg-blue text-white font-bold  p-2 shadow-lg hover:shadow-none"
       >
         Register
       </Link>
