@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/inertia-vue3';
+import route from 'ziggy-js';
+
+const dashboardUrl = route('dashboard');
+const loginUrl = route('login');
+const registerUrl = route('register');
 </script>
 
 <template>
@@ -8,7 +13,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
   <div class="space-x-3 p-5">
     <Link
       v-if="$page.props.user"
-      :href="route('dashboard')"
+      :href="dashboardUrl"
       class="bg-blue text-white font-bold p-2 shadow-lg hover:shadow-none"
     >
       Mypage
@@ -16,14 +21,14 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
 
     <template v-else>
       <Link
-        :href="route('login')"
+        :href="loginUrl"
         class="bg-blue text-white font-bold p-2 shadow-lg hover:shadow-none"
       >
         Log in
       </Link>
 
       <Link
-        :href="route('register')"
+        :href="registerUrl"
         class="bg-blue text-white font-bold  p-2 shadow-lg hover:shadow-none"
       >
         Register
