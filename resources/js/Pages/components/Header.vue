@@ -4,11 +4,11 @@ import { Link } from '@inertiajs/inertia-vue3';
 import route from 'ziggy-js';
 
 defineProps({
-    title: String,
+  title: String,
 });
 
 const logout = () => {
-    Inertia.post(route('logout'));
+  Inertia.post(route('logout'));
 };
 </script>
 
@@ -17,10 +17,10 @@ const logout = () => {
     <span class="cursor-pointer text-white font-bold text-3xl">
       laravel Vue Memo
     </span>
-    <div class="text-white space-x-5">
+    <div class="text-white font-bold space-x-5">
       <Link
         :href="route('profile.show')"
-        class="font-bold hover:opacity-80"
+        class="hover:opacity-80"
       >
         profile
       </Link>
