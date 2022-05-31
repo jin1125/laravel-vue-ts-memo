@@ -10,7 +10,7 @@ const registerUrl = route('register');
 <template>
   <Head title="Welcome" />
 
-  <div class="space-x-3 p-5">
+  <div class="space-x-20 m-20 text-center">
     <Link
       v-if="$page.props.user"
       :href="dashboardUrl"
