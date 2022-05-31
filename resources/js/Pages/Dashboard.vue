@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import AppLayout from '@/Layouts/AppLayout.vue';
-import Welcome from '@/Jetstream/Welcome.vue';
+import Top from '@/Pages/Memo/Top.vue';
 </script>
 
 <template>
     <AppLayout title="Dashboard">
-        <Welcome />
+      <Top />
     </AppLayout>
 </template>
