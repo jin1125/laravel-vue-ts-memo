@@ -7,6 +7,9 @@ defineProps({
   title: String,
 });
 
+const profileUrl = route('profile.show')
+const dashboardUrl = route('dashboard')
+
 const logout = () => {
   Inertia.post(route('logout'));
 };
@@ -14,12 +17,15 @@ const logout = () => {
 
 <template>
   <div class="flex justify-between items-center bg-blue py-3 px-6">
-    <span class="cursor-pointer text-white font-bold text-3xl">
-      laravel Vue Memo
-    </span>
+      <Link
+        :href="dashboardUrl"
+        class="text-white font-bold text-3xl"
+      >
+        laravel Vue Memo
+      </Link>
     <div class="text-white font-bold space-x-5">
       <Link
-        :href="route('profile.show')"
+        :href="profileUrl"
         class="hover:opacity-80"
       >
         profile
