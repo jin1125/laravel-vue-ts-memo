@@ -3,13 +3,15 @@ import './bootstrap'
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
-import '../css/app.css'
-
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
+import '../css/app.css';
+import AppLayout from '@/Layouts/AppLayout.vue';
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: name => import(`./Pages/${name}.vue`),
+    resolve: async (name: string) => {
+        const page = (await import(`./Pages/${name}.vue`)).default;
+        page.layout ??= AppLayout;
+        return page;
+    },
     setup({ el, app, props, plugin }) {
         createApp({ render: () => h(app, props) })
             .use(plugin)
@@ -18,4 +20,4 @@ createInertiaApp({
     },
 });
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init();
