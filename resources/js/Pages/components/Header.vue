@@ -21,7 +21,7 @@ const logout = () => {
       :href="dashboardUrl"
       class="text-white font-bold text-3xl"
     >
-      laravel Vue Memo
+      laravel Vue Ts Memo
     </Link>
     <div
       v-if="$page.props.user"
