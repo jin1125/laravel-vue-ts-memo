@@ -17,13 +17,16 @@ const logout = () => {
 
 <template>
   <div class="flex justify-between items-center bg-blue py-3 px-6">
-      <Link
-        :href="dashboardUrl"
-        class="text-white font-bold text-3xl"
-      >
-        laravel Vue Memo
-      </Link>
-    <div class="text-white font-bold space-x-5">
+    <Link
+      :href="dashboardUrl"
+      class="text-white font-bold text-3xl"
+    >
+      laravel Vue Memo
+    </Link>
+    <div
+      v-if="$page.props.user"
+      class="text-white font-bold space-x-5"
+    >
       <Link
         :href="profileUrl"
         class="hover:opacity-80"
