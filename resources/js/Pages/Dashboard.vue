@@ -1,5 +1,17 @@
 <script setup lang="ts">
+import { useForm } from '@inertiajs/inertia-vue3'
+import route from 'ziggy-js'
 
+const addMemo = useForm({
+  title: '',
+  detail: '',
+  limit: '',
+})
+
+const onAddClick = () => {
+  console.log(addMemo)
+  // addMemo.post(route(''))
+}
 </script>
 
 <template>
@@ -17,6 +29,7 @@
         </label>
         <input
           type="text"
+          v-model.trim="addMemo.title"
           class="border border-blue text-blue
             font-bold col-span-2 py-1 px-2"
           placeholder="write me ..."
@@ -30,6 +43,7 @@
           detail
         </label>
         <textarea
+          v-model.trim="addMemo.detail"
           class="border border-blue text-blue
             font-bold col-span-2 py-1 px-2"
           placeholder="write me ..."
@@ -44,6 +58,7 @@
         </label>
         <input
           type="date"
+          v-model="addMemo.limit"
           class="border border-blue col-span-2 text-blue
             text-sm font-bold py-1 px-2"
           :min="new Date().toISOString().split('T')[0]"
@@ -51,6 +66,7 @@
       </div>
       <div class="text-center pt-5 pb-2">
         <button
+          @click="onAddClick"
           class="bg-blue shadow-lg hover:shadow-none
             text-white font-bold py-1 px-5"
         >
