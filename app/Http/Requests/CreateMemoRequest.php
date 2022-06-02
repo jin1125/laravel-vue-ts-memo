@@ -24,9 +24,9 @@ class CreateMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'  => 'required',
-            'detail' => 'required',
-            'limit'  => 'required',
+            // 'title'  => 'required',
+            // 'detail' => 'required',
+            // 'limit'  => 'required',
         ];
     }
 }
