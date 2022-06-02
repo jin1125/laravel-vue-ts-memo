@@ -10,8 +10,12 @@ class MemoController extends Controller
 {
     public function create(CreateMemoRequest $request)
     {
-        $memo = $request->all();
+        $memo = new Memo;
+        $memo->title = $request->input('title');
+        $memo->detail = $request->input('detail');
+        $memo->limit = $request->input('limit');
+        $memo->save();
 
-        dd($memo);
+        return redirect()->route('dashboard');
     }
 }
