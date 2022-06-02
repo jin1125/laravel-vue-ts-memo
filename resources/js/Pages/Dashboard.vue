@@ -37,9 +37,9 @@ const onAddClick = () => {
           name="title"
           id="title"
         >
-      <p class="col-start-2 col-span-2 font-bold text-red-500 text-sm">
-        {{ addMemo.errors.title }}
-      </p>
+        <p class="col-start-2 col-span-2 font-bold text-red-500 text-sm">
+          {{ addMemo.errors.title }}
+        </p>
       </div>
 
       <div class="grid grid-cols-3">
