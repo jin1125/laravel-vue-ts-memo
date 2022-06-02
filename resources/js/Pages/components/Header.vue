@@ -8,7 +8,6 @@ defineProps({
 });
 
 const profileUrl = route('profile.show')
-const dashboardUrl = route('dashboard')
 
 const logout = () => {
   Inertia.post(route('logout'));
@@ -18,7 +17,7 @@ const logout = () => {
 <template>
   <div class="flex justify-between items-center bg-blue py-3 px-6">
     <Link
-      :href="dashboardUrl"
+      :href="$page.props.user ? route('dashboard') : route('welcome')"
       class="text-white font-bold text-3xl"
     >
       laravel Vue Ts Memo

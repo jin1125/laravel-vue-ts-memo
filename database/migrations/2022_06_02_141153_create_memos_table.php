@@ -13,7 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('memos', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('detail');
+            $table->string('limit');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('memos');
     }
 };

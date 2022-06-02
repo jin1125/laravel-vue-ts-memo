@@ -16,7 +16,7 @@ use App\Http\Controllers;
 
 Route::get('/', function () {
     return Inertia::render('Welcome');
-});
+})->name('welcome');
 
 Route::middleware([
     'auth:sanctum',

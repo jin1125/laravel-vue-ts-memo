@@ -35,7 +35,7 @@ const onAddClick = () => {
           placeholder="write me ..."
           maxlength="20"
           name="title"
-          id="title"
+          id="titl e"
         >
         <p class="col-start-2 col-span-2 font-bold text-red-500 text-sm">
           {{ addMemo.errors.title }}
