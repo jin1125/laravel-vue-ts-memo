@@ -9,8 +9,7 @@ const addMemo = useForm({
 })
 
 const onAddClick = () => {
-  console.log(addMemo)
-  // addMemo.post(route(''))
+  addMemo.post(route('memo.create'))
 }
 </script>
 
