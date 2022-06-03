@@ -14,18 +14,13 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome');
-})->name('welcome');
+Route::get('/', fn () => Inertia::render('Welcome'))->name('welcome');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [Controllers\MemoController::class, 'index'])->name('dashboard');
+    Route::post('memo/create', [Controllers\MemoController::class, 'create'])->name('memo.create');
 });
-
-Route::post('memo/create', [Controllers\MemoController::class, 'create'])->name('memo.create');

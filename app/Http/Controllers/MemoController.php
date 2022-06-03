@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\CreateMemoRequest;
 use App\Models\Memo;
+use Inertia\Inertia;
 
 class MemoController extends Controller
 {
+    public function index()
+    {
+        return Inertia::render('Dashboard');
+    }
+
     public function create(CreateMemoRequest $request)
     {
         $memo = new Memo;
