@@ -2,14 +2,14 @@
 import { useForm } from '@inertiajs/inertia-vue3'
 import route from 'ziggy-js'
 
-const addMemo = useForm({
+let addMemo = useForm({
   title: '',
   detail: '',
   limit: '',
 })
 
 const onAddClick = () => {
-  addMemo.post(route('memo.create'))
+  addMemo.post(route('memo.create'), { preserveState: false })
 }
 </script>
 
@@ -22,7 +22,7 @@ const onAddClick = () => {
       New Memo
     </h1>
 
-    <form @submit.prevent="" class="space-y-3">
+    <div class="space-y-5">
       <div class="grid grid-cols-3">
         <label for="title" class="text-blue text-xl font-bold col-span-1">
           title
@@ -35,7 +35,7 @@ const onAddClick = () => {
           placeholder="write me ..."
           maxlength="20"
           name="title"
-          id="titl e"
+          id="title"
         >
         <p class="col-start-2 col-span-2 font-bold text-red-500 text-sm">
           {{ addMemo.errors.title }}
@@ -86,7 +86,7 @@ const onAddClick = () => {
           Add
         </button>
       </div>
-    </form>
+    </div>
   </div>
 
   <div class="w-2/5 flex justify-between mx-auto">
