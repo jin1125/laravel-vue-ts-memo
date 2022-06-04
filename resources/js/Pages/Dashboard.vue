@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { PropType } from 'vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 import route from 'ziggy-js'
+import { Memos } from '../types/Memos'
 
 defineProps({
   memos: {
-    type: Array,
+    type: Array as PropType<Memos[]>,
     default: () => [],
   },
 })
