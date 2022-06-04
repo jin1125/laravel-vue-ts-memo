@@ -34,10 +34,10 @@ const onEditClick = (index: number) => {
 <template>
 {{addMemo}}
   <div
-    class="border border-blue py-5 px-10 my-10
+    class="border border-blue px-10 my-10
       w-2/5 min-w-80 mx-auto shadow-lg"
   >
-    <h1 class="text-blue text-2xl font-bold text-center mt-5 mb-10">
+    <h1 class="text-blue text-2xl font-bold text-center my-10">
       New Memo
     </h1>
 
@@ -96,14 +96,21 @@ const onEditClick = (index: number) => {
         </p>
       </div>
 
-      <div class="text-center pt-5 pb-2">
+      <div class="text-center">
         <button
           @click="onAddClick"
           class="bg-blue shadow-lg hover:shadow-none
-            text-white font-bold py-1 px-5"
+            text-white font-bold py-1 px-5 mt-6"
+          :class="[addMemo.recentlySuccessful ? 'mb-4' : 'mb-16']"
         >
           Add
         </button>
+        <p
+          v-if="addMemo.recentlySuccessful"
+          class="font-bold mb-5 text-green-600 text-lg"
+        >
+          Add successful!
+        </p>
       </div>
     </div>
   </div>

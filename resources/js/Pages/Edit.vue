@@ -92,14 +92,21 @@ const onClickBack = () => {
         <button
           @click="onUpdateClick"
           class="bg-blue shadow-lg hover:shadow-none
-            text-white font-bold py-1 px-5"
+            text-white font-bold py-1 px-5 mt-5"
+          :class="[updateMemo.recentlySuccessful ? 'mb-2' : 'mb-12']"
         >
           Edit
         </button>
+        <p
+          v-if="updateMemo.recentlySuccessful"
+          class="font-bold mb-5 text-green-600 text-lg"
+        >
+          Edit successful!
+        </p>
       </div>
     </div>
 
-    <div class="grid grid-cols-2 justify-items-center mt-8">
+    <div class="grid grid-cols-2 justify-items-center">
       <button
         @click="onClickBack"
         class="border border-blue shadow-lg hover:shadow-none
