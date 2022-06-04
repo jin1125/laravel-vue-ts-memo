@@ -15,11 +15,11 @@ class MemoController extends Controller
 
     public function create(CreateMemoRequest $request)
     {
-        $memo = new Memo;
-        $memo->title = $request->input('title');
-        $memo->detail = $request->input('detail');
-        $memo->limit = $request->input('limit');
-        $memo->save();
+        Memo::create([
+            'title'  => $request->input('title'),
+            'detail' => $request->input('detail'),
+            'limit'  => $request->input('limit'),
+        ]);
 
         return redirect()->route('dashboard');
     }
