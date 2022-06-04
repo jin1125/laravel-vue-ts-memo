@@ -21,9 +21,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/memo', [Controllers\MemoController::class, 'index'])->name('memo.index');
-
     Route::prefix('memo')->group(function () {
+        Route::get('/', [Controllers\MemoController::class, 'index'])->name('memo.index');
         Route::post('create', [Controllers\MemoController::class, 'create'])->name('memo.create');
         Route::get('edit/{id}', [Controllers\MemoController::class, 'edit'])->name('memo.edit');
         Route::post('update', [Controllers\MemoController::class, 'update'])->name('memo.update');
