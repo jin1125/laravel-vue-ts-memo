@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('memos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('status');
             $table->string('detail');
             $table->string('limit');
             $table->timestamps();

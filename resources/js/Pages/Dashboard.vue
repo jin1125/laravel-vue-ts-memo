@@ -15,6 +15,7 @@ defineProps({
 const addMemo = useForm({
   id: undefined,
   title: '',
+  status: 'incomplete',
   detail: '',
   limit: '',
 })
@@ -135,7 +136,7 @@ const onEditClick = (index: number) => {
 
   <ul class="space-y-5 my-16">
     <li
-      v-for="(memo, index) in memos"
+      v-for="(memo) in memos"
       :key="memo.id"
     >
       <div
@@ -146,7 +147,7 @@ const onEditClick = (index: number) => {
           {{ memo.title }}
         </span>
         <button
-          @click="onEditClick(index)"
+          @click="onEditClick(memo.id!)"
           class="bg-blue shadow-lg hover:shadow-none
             text-white font-bold py-1 px-4"
         >

@@ -19,6 +19,7 @@ class MemoController extends Controller
     {
         Memo::create([
             'title'  => $request->input('title'),
+            'status' => $request->input('status'),
             'detail' => $request->input('detail'),
             'limit'  => $request->input('limit'),
         ]);
@@ -28,6 +29,12 @@ class MemoController extends Controller
 
     public function edit($id)
     {
-        return Inertia::render('Edit', ['id' => $id]);
+        $memo = Memo::find($id);
+        if (!$memo)
+        {
+            return redirect()->route('dashboard');
+        }
+
+        return Inertia::render('Edit', ['memo' => $memo]);
     }
 }

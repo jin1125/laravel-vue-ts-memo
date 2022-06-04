@@ -1,6 +1,26 @@
 <script setup lang="ts">
+import { useForm } from '@inertiajs/inertia-vue3'
 import route from 'ziggy-js'
 import { Inertia } from '@inertiajs/inertia'
+
+const props = defineProps({
+  memo: {
+    type: Object,
+    default: () => {},
+  },
+})
+
+const updateMemo = useForm({
+  id: props.memo.id,
+  title: props.memo.title,
+  status: props.memo.status,
+  detail: props.memo.detail,
+  limit: props.memo.limit,
+})
+
+const onUpdateClick = () => {
+  updateMemo.post(route('memo.update'), { preserveState: false })
+}
 
 const onClickBack = () => {
   Inertia.get(route('dashboard'))
@@ -8,6 +28,7 @@ const onClickBack = () => {
 </script>
 
 <template>
+{{ memo }}
   <div
     class="border border-blue p-10 my-20
       w-2/5 min-w-80 mx-auto shadow-lg"
@@ -16,6 +37,7 @@ const onClickBack = () => {
       <div class="text-center ">
         <input
           type="text"
+          v-model.trim="updateMemo.title"
           class="border border-blue text-blue text-center
             font-bold text-2xl py-1 px-2"
           placeholder="write me ..."
@@ -31,6 +53,7 @@ const onClickBack = () => {
         <select
           class="border border-blue text-blue
             font-bold col-span-2 py-1 px-2"
+          v-model.trim="updateMemo.status"
           name="status"
           id="status"
         >
@@ -46,6 +69,7 @@ const onClickBack = () => {
         <textarea
           class="border border-blue text-blue
             font-bold col-span-2 py-1 px-2"
+          v-model.trim="updateMemo.detail"
           placeholder="write me ..."
           maxlength="100"
           name="detail" id="detail"
@@ -57,6 +81,7 @@ const onClickBack = () => {
         </label>
         <input
           type="date"
+          v-model.trim="updateMemo.limit"
           class="border border-blue col-span-2 text-blue
             text-sm font-bold py-1 px-2"
           :min="new Date().toISOString().split('T')[0]"
@@ -64,6 +89,7 @@ const onClickBack = () => {
       </div>
       <div class="text-center">
         <button
+          @click="onUpdateClick"
           class="bg-blue shadow-lg hover:shadow-none
             text-white font-bold py-1 px-5"
         >

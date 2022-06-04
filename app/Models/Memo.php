@@ -10,8 +10,10 @@ class Memo extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'title',
+        'status',
         'detail',
-        'limit'
+        'limit',
     ];
 }
