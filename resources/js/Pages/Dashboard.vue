@@ -150,6 +150,4 @@ const onAddClick = () => {
       </div>
     </li>
   </ul>
-
-  {{ memos }}
 </template>
