@@ -32,7 +32,6 @@ const onEditClick = (index: number) => {
 </script>
 
 <template>
-{{addMemo}}
   <div
     class="border border-blue px-10 my-10
       w-2/5 min-w-80 mx-auto shadow-lg"
