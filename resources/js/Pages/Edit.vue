@@ -28,7 +28,6 @@ const onClickBack = () => {
 </script>
 
 <template>
-{{ memo }}
   <div
     class="border border-blue p-10 my-20
       w-2/5 min-w-80 mx-auto shadow-lg"

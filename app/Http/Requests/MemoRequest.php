@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateMemoRequest extends FormRequest
+class MemoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,6 +25,7 @@ class CreateMemoRequest extends FormRequest
     {
         return [
             'title'  => 'required',
+            'status'  => 'required',
             'detail' => 'required',
             'limit'  => 'required',
         ];
