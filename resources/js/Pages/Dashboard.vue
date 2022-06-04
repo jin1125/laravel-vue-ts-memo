@@ -12,6 +12,7 @@ defineProps({
 })
 
 let addMemo = useForm({
+  id: undefined,
   title: '',
   detail: '',
   limit: '',
@@ -149,4 +150,6 @@ const onAddClick = () => {
       </div>
     </li>
   </ul>
+
+  {{ memos }}
 </template>
