@@ -2,7 +2,7 @@
 import { PropType } from 'vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 import route from 'ziggy-js'
-import { Inertia } from '@inertiajs/inertia';
+import { Inertia } from '@inertiajs/inertia'
 import { Memos } from '../types/Memos'
 
 defineProps({
@@ -24,7 +24,7 @@ const onAddClick = () => {
 }
 
 const onEditClick = (index: number) => {
-  Inertia.get(route('memo.edit', [index]));
+  Inertia.get(route('memo.edit', [index]))
 }
 </script>
 

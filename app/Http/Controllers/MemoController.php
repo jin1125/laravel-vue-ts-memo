@@ -28,6 +28,6 @@ class MemoController extends Controller
 
     public function edit($id)
     {
-        dd($id);
+        return Inertia::render('Edit', ['id' => $id]);
     }
 }
