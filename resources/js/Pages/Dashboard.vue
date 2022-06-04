@@ -2,6 +2,13 @@
 import { useForm } from '@inertiajs/inertia-vue3'
 import route from 'ziggy-js'
 
+defineProps({
+  memos: {
+    type: Array,
+    default: () => [],
+  },
+})
+
 let addMemo = useForm({
   title: '',
   detail: '',
@@ -117,4 +124,27 @@ const onAddClick = () => {
       </select>
     </div>
   </div>
+
+  <ul class="space-y-5 my-16">
+    <li
+      v-for="(memo, index) in memos"
+      :key="memo.id"
+    >
+      <div
+        class="flex justify-between items-center mx-auto border
+          border-blue shadow-lg py-2 px-3 w-2/5"
+      >
+        <span class="text-blue font-bold text-lg">
+          {{ memo.title }}
+        </span>
+        <button
+          @click=""
+          class="bg-blue shadow-lg hover:shadow-none
+            text-white font-bold py-1 px-4"
+        >
+          →
+        </button>
+      </div>
+    </li>
+  </ul>
 </template>

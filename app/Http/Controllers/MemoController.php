@@ -10,7 +10,9 @@ class MemoController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Dashboard');
+        $memos = Memo::all();
+
+        return Inertia::render('Dashboard', ['memos' => $memos]);
     }
 
     public function create(CreateMemoRequest $request)
