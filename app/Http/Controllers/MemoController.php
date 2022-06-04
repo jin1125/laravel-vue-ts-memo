@@ -25,4 +25,9 @@ class MemoController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function edit($id)
+    {
+        dd($id);
+    }
 }

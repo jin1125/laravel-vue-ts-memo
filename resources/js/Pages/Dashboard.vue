@@ -2,6 +2,7 @@
 import { PropType } from 'vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 import route from 'ziggy-js'
+import { Inertia } from '@inertiajs/inertia';
 import { Memos } from '../types/Memos'
 
 defineProps({
@@ -11,7 +12,7 @@ defineProps({
   },
 })
 
-let addMemo = useForm({
+const addMemo = useForm({
   id: undefined,
   title: '',
   detail: '',
@@ -20,6 +21,10 @@ let addMemo = useForm({
 
 const onAddClick = () => {
   addMemo.post(route('memo.create'), { preserveState: false })
+}
+
+const onEditClick = (index: number) => {
+  Inertia.get(route('memo.edit', [index]));
 }
 </script>
 
@@ -141,7 +146,7 @@ const onAddClick = () => {
           {{ memo.title }}
         </span>
         <button
-          @click=""
+          @click="onEditClick(index)"
           class="bg-blue shadow-lg hover:shadow-none
             text-white font-bold py-1 px-4"
         >

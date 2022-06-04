@@ -22,5 +22,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [Controllers\MemoController::class, 'index'])->name('dashboard');
-    Route::post('memo/create', [Controllers\MemoController::class, 'create'])->name('memo.create');
+
+    Route::prefix('memo')->group(function () {
+        Route::post('create', [Controllers\MemoController::class, 'create'])->name('memo.create');
+        Route::get('edit/{id}', [Controllers\MemoController::class, 'edit'])->name('memo.edit');
+    });
 });
