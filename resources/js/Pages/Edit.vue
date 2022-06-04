@@ -19,7 +19,9 @@ const updateMemo = useForm({
 })
 
 const onUpdateClick = () => {
-  updateMemo.post(route('memo.update'), { preserveState: false })
+  updateMemo.post(route('memo.update'), {
+    onSuccess: () => updateMemo.reset()
+  })
 }
 
 const onClickBack = () => {

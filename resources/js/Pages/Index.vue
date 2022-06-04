@@ -21,7 +21,9 @@ const addMemo = useForm({
 })
 
 const onAddClick = () => {
-  addMemo.post(route('memo.create'), { preserveState: false })
+  addMemo.post(route('memo.create'), {
+    onSuccess: () => addMemo.reset()
+  })
 }
 
 const onEditClick = (index: number) => {
@@ -30,6 +32,7 @@ const onEditClick = (index: number) => {
 </script>
 
 <template>
+{{addMemo}}
   <div
     class="border border-blue py-5 px-10 my-10
       w-2/5 min-w-80 mx-auto shadow-lg"
