@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useForm } from '@inertiajs/inertia-vue3'
-import route from 'ziggy-js'
-import { Inertia } from '@inertiajs/inertia'
+import { Inertia } from '@inertiajs/inertia';
+import { useForm } from '@inertiajs/inertia-vue3';
+import route from 'ziggy-js';
 
 const props = defineProps({
   memo: {
@@ -23,7 +23,7 @@ const onUpdateClick = () => {
 }
 
 const onClickBack = () => {
-  Inertia.get(route('dashboard'))
+  Inertia.get(route('memo.index'))
 }
 </script>
 

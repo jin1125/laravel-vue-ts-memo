@@ -17,7 +17,7 @@ const logout = () => {
 <template>
   <div class="flex justify-between items-center bg-blue py-3 px-6">
     <Link
-      :href="$page.props.user ? route('dashboard') : route('welcome')"
+      :href="$page.props.user ? route('memo.index') : route('welcome')"
       class="text-white font-bold text-3xl"
     >
       laravel Vue Ts Memo

@@ -4,16 +4,16 @@
     "src": "resources/js/app.ts",
     "isEntry": true,
     "dynamicImports": [
-      "resources/js/Pages/Dashboard.vue",
+      "resources/js/Pages/Index.vue",
       "resources/js/Pages/Welcome.vue"
     ],
     "css": [
       "assets/app.dda4509e.css"
     ]
   },
-  "resources/js/Pages/Dashboard.vue": {
-    "file": "assets/Dashboard.c7fbc99b.js",
-    "src": "resources/js/Pages/Dashboard.vue",
+  "resources/js/Pages/Index.vue": {
+    "file": "assets/Index.c7fbc99b.js",
+    "src": "resources/js/Pages/Index.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.ts",

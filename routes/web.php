@@ -21,7 +21,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', [Controllers\MemoController::class, 'index'])->name('dashboard');
+    Route::get('/memo', [Controllers\MemoController::class, 'index'])->name('memo.index');
 
     Route::prefix('memo')->group(function () {
         Route::post('create', [Controllers\MemoController::class, 'create'])->name('memo.create');

@@ -12,7 +12,7 @@ class MemoController extends Controller
     {
         $memos = Memo::all();
 
-        return Inertia::render('Dashboard', ['memos' => $memos]);
+        return Inertia::render('Index', ['memos' => $memos]);
     }
 
     public function create(MemoRequest $request)
@@ -24,7 +24,7 @@ class MemoController extends Controller
             'limit'  => $request->input('limit'),
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('memo.index');
     }
 
     public function edit($id)
@@ -33,7 +33,7 @@ class MemoController extends Controller
 
         if (!$memo)
         {
-            return redirect()->route('dashboard');
+            return redirect()->route('memo.index');
         }
 
         return Inertia::render('Edit', ['memo' => $memo]);

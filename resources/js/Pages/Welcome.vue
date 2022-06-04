@@ -2,7 +2,7 @@
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import route from 'ziggy-js';
 
-const dashboardUrl = route('dashboard');
+const dashboardUrl = route('memo.index');
 const loginUrl = route('login');
 const registerUrl = route('register');
 </script>
