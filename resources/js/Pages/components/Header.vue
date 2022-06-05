@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Inertia } from '@inertiajs/inertia';
-import { Link } from '@inertiajs/inertia-vue3';
-import route from 'ziggy-js';
+import { Inertia } from '@inertiajs/inertia'
+import { Link } from '@inertiajs/inertia-vue3'
+import route from 'ziggy-js'
 
 defineProps({
   title: String,
@@ -10,8 +10,9 @@ defineProps({
 const profileUrl = route('profile.show')
 
 const logout = () => {
-  Inertia.post(route('logout'));
-};
+  const isLogout = confirm('Logout?')
+  if (isLogout) Inertia.post(route('logout'))
+}
 </script>
 
 <template>

@@ -29,7 +29,8 @@ const onClickBack = () => {
 }
 
 const onClickDestroy = () => {
-  Inertia.post(route('memo.destroy', [updateMemo.id]))
+  const isDestroy = confirm('Delete?')
+  if (isDestroy) Inertia.post(route('memo.destroy', [updateMemo.id]))
 }
 </script>
 
