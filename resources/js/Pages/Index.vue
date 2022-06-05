@@ -18,6 +18,7 @@ const props = defineProps({
 })
 
 let sortStatus: Ref<boolean> = ref(true);
+let filterStatus: Ref<string> = ref('all');
 
 const addMemo = useForm({
   title: '',
@@ -158,6 +159,7 @@ const onSortClick = () => {
       <select
         class="select-none border border-blue text-blue
           font-bold col-span-2 py-1 px-2"
+        v-model="filterStatus"
       >
         <option value="all">All</option>
         <option value="incomplete">Incomplete</option>
@@ -173,6 +175,8 @@ const onSortClick = () => {
       :key="memo.id"
     >
       <div
+        v-if="filterStatus === 'all' ||
+          memo.status === filterStatus"
         class="flex justify-between items-center mx-auto border
           border-blue shadow-lg py-2 px-3 w-2/5"
       >
