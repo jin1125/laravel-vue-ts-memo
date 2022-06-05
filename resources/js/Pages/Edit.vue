@@ -27,7 +27,7 @@ const onClickBack = () => {
 }
 
 const onClickDestroy = () => {
-  Inertia.post(route('memo.destroy'))
+  Inertia.post(route('memo.destroy', [updateMemo.id]))
 }
 </script>
 

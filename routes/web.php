@@ -26,6 +26,6 @@ Route::middleware([
         Route::post('create', [Controllers\MemoController::class, 'create'])->name('memo.create');
         Route::get('edit/{id}', [Controllers\MemoController::class, 'edit'])->name('memo.edit');
         Route::post('update', [Controllers\MemoController::class, 'update'])->name('memo.update');
-        Route::post('destroy', [Controllers\MemoController::class, 'destroy'])->name('memo.destroy');
+        Route::post('destroy/{id}', [Controllers\MemoController::class, 'destroy'])->name('memo.destroy');
     });
 });

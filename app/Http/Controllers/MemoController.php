@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\MemoRequest;
 use App\Models\Memo;
 use Inertia\Inertia;
@@ -53,8 +54,11 @@ class MemoController extends Controller
         return redirect()->route('memo.edit', ['id' => $memoId]);
     }
 
-    public function destroy()
+    public function destroy(Request $request)
     {
+        $memoId = (int) $request->route('id');
+        Memo::destroy($memoId);
+
         return redirect()->route('memo.index');
     }
 }
