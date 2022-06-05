@@ -12,7 +12,10 @@ class MemoController extends Controller
 {
     public function index(Request $request)
     {
-        $memos = Memo::all();
+        $memos = Memo::where('user_id', '=', Auth::id())
+            ->orderBy('id', 'DESC')
+            ->get();
+
         $successDestroy = $request->session()->get('successDestroy') ?? '';
 
         return Inertia::render('Index', [
