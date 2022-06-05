@@ -21,7 +21,7 @@ const updateMemo = useForm({
 })
 
 const onUpdateClick = () => {
-  updateMemo.post(route('memo.update'))
+  updateMemo.post(route('memo.update', [updateMemo.id]))
 }
 
 const onClickBack = () => {

@@ -7,6 +7,7 @@ use App\Http\Requests\MemoRequest;
 use App\Models\Memo;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 
 class MemoController extends Controller
 {
@@ -40,8 +41,9 @@ class MemoController extends Controller
     public function edit($id)
     {
         $memo = Memo::find($id);
+        $isOwnMemo = $memo->user_id === Auth::id();
 
-        if (!$memo)
+        if (!$memo || !$isOwnMemo)
         {
             return redirect()->route('memo.index');
         }
@@ -51,8 +53,14 @@ class MemoController extends Controller
 
     public function update(MemoRequest $request)
     {
-        $memoId = (int) $request->input('id');
+        $memoId = (int) $request->route('id');
         $memo = Memo::where('id', $memoId)->firstOrFail();
+        $isOwnMemo = $memo->user_id === Auth::id();
+        if (!$isOwnMemo)
+        {
+            throw new AccessDeniedException();
+        }
+
         $memo->update([
             'title'  => $request->input('title'),
             'status' => $request->input('status'),
@@ -66,6 +74,13 @@ class MemoController extends Controller
     public function destroy(Request $request)
     {
         $memoId = (int) $request->route('id');
+        $memo = Memo::where('id', $memoId)->firstOrFail();
+        $isOwnMemo = $memo->user_id === Auth::id();
+        if (!$isOwnMemo)
+        {
+            throw new AccessDeniedException();
+        }
+
         Memo::destroy($memoId);
 
         $message = 'Delete successful';
