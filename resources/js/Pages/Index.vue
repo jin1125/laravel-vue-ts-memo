@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { PropType } from 'vue'
+import { PropType, ref, Ref } from 'vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 import route from 'ziggy-js'
 import { Inertia } from '@inertiajs/inertia'
 import { Memos } from '../types/Memos'
 
-defineProps({
+const props = defineProps({
   memos: {
     type: Array as PropType<Memos[]>,
     default: () => [],
@@ -16,6 +16,8 @@ defineProps({
     default: '',
   },
 })
+
+let sortStatus: Ref<boolean> = ref(true);
 
 const addMemo = useForm({
   title: '',
@@ -33,6 +35,18 @@ const onAddClick = () => {
 const onEditClick = (index: number) => {
   Inertia.get(route('memo.edit', [index]))
 }
+
+const onSortClick = () => {
+  sortStatus.value = !sortStatus.value
+
+  if(sortStatus.value) {
+    return props.memos.sort((a, b) => b.id -  a.id)
+  }
+
+  if(!sortStatus.value) {
+    return props.memos.sort((a, b) => a.id - b.id)
+  }
+}
 </script>
 
 <template>
@@ -40,7 +54,7 @@ const onEditClick = (index: number) => {
     class="border border-blue px-10 my-10
       w-2/5 min-w-80 mx-auto shadow-lg"
   >
-    <h1 class="text-blue text-2xl font-bold text-center my-10">
+    <h1 class="text-blue text-3xl font-bold text-center my-10">
       New Memo
     </h1>
 
@@ -102,7 +116,7 @@ const onEditClick = (index: number) => {
       <div class="text-center">
         <button
           @click="onAddClick"
-          class="bg-blue shadow-lg hover:shadow-none
+          class="select-none bg-blue shadow-lg hover:shadow-none
             text-white font-bold py-1 px-5 mt-6"
           :class="[addMemo.recentlySuccessful || successDestroy ? 'mb-4' : 'mb-16']"
         >
@@ -130,8 +144,8 @@ const onEditClick = (index: number) => {
         sort
       </p>
       <button
-        @click=""
-        class="text-blue text-xl font-bold border
+        @click="onSortClick"
+        class="select-none text-blue text-xl font-bold border
           border-blue px-3 shadow-lg hover:shadow-none">
         ↓↑
       </button>
@@ -142,7 +156,7 @@ const onEditClick = (index: number) => {
         filter
       </p>
       <select
-        class="border border-blue text-blue
+        class="select-none border border-blue text-blue
           font-bold col-span-2 py-1 px-2"
       >
         <option value="all">All</option>
@@ -165,9 +179,10 @@ const onEditClick = (index: number) => {
         <span class="text-blue font-bold text-lg">
           {{ memo.title }}
         </span>
+
         <button
           @click="onEditClick(memo.id)"
-          class="bg-blue shadow-lg hover:shadow-none
+          class="select-none bg-blue shadow-lg hover:shadow-none
             text-white font-bold py-1 px-4"
         >
           →

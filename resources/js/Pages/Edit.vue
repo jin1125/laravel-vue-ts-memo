@@ -71,7 +71,10 @@ const onClickDestroy = () => {
         </select>
       </div>
       <div class="grid grid-cols-3">
-        <label for="detail" class="text-blue text-xl font-bold col-span-1">
+        <label
+          for="detail"
+          class="text-blue text-xl font-bold col-span-1"
+        >
           detail
         </label>
         <textarea
@@ -104,7 +107,7 @@ const onClickDestroy = () => {
       <div class="text-center">
         <button
           @click="onUpdateClick"
-          class="bg-blue shadow-lg hover:shadow-none
+          class="select-none bg-blue shadow-lg hover:shadow-none
             text-white font-bold py-1 px-5 mt-5"
           :class="[updateMemo.recentlySuccessful ? 'mb-2' : 'mb-12']"
         >
@@ -122,14 +125,14 @@ const onClickDestroy = () => {
     <div class="grid grid-cols-2 justify-items-center">
       <button
         @click="onClickBack"
-        class="border border-blue shadow-lg hover:shadow-none
+        class="select-none border border-blue shadow-lg hover:shadow-none
           text-blue text-xs font-bold py-1 px-3"
       >
         ← Back
       </button>
       <button
         @click="onClickDestroy"
-        class="border border-blue shadow-lg hover:shadow-none
+        class="select-none border border-blue shadow-lg hover:shadow-none
           text-blue text-xs font-bold py-1 px-3"
       >
         Delete

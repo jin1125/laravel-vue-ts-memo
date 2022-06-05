@@ -13,8 +13,9 @@ class MemoController extends Controller
 {
     public function index(Request $request)
     {
+        $sortOrder = 'DESC';
         $memos = Memo::where('user_id', '=', Auth::id())
-            ->orderBy('id', 'DESC')
+            ->orderBy('id', $sortOrder)
             ->get();
 
         $successDestroy = $request->session()->get('successDestroy') ?? '';
