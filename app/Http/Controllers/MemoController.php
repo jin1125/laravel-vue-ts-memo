@@ -12,7 +12,7 @@ class MemoController extends Controller
     public function index(Request $request)
     {
         $memos = Memo::all();
-        $successDestroy = $request->session()->get('successDestroy');
+        $successDestroy = $request->session()->get('successDestroy') ?? '';
 
         return Inertia::render('Index', [
             'memos' => $memos,
