@@ -28,13 +28,13 @@ const logout = () => {
     >
       <Link
         :href="profileUrl"
-        class="hover:opacity-80"
+        class="hover:opacity-90"
       >
         profile
       </Link>
       <button
         @click.prevent="logout"
-        class="font-bold hover:opacity-80"
+        class="font-bold hover:opacity-90"
       >
         logout
       </button>

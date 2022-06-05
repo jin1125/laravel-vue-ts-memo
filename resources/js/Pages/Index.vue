@@ -116,9 +116,9 @@ const onSortClick = () => {
 
       <div class="text-center">
         <button
-          @click="onAddClick"
-          class="select-none bg-blue shadow-lg hover:shadow-none
-            text-white font-bold py-1 px-5 mt-6"
+          @click.prevent="onAddClick"
+          class="select-none bg-blue shadow-lg text-white font-bold
+            py-1 px-5 mt-6 hover:shadow-none hover:opacity-90"
           :class="[addMemo.recentlySuccessful || successDestroy ? 'mb-4' : 'mb-16']"
         >
           Add
@@ -145,9 +145,9 @@ const onSortClick = () => {
         sort
       </p>
       <button
-        @click="onSortClick"
-        class="select-none text-blue text-xl font-bold border
-          border-blue px-3 shadow-lg hover:shadow-none">
+        @click.prevent="onSortClick"
+        class="select-none text-blue text-xl font-bold border border-blue
+          px-3 shadow-lg hover:shadow-none hover:opacity-90">
         ↓↑
       </button>
     </div>
@@ -158,7 +158,7 @@ const onSortClick = () => {
       </p>
       <select
         class="select-none border border-blue text-blue
-          font-bold col-span-2 py-1 px-2"
+          font-bold col-span-2 py-1 cursor-pointer hover:opacity-90"
         v-model="filterStatus"
       >
         <option value="all">All</option>
@@ -185,9 +185,9 @@ const onSortClick = () => {
         </span>
 
         <button
-          @click="onEditClick(memo.id)"
-          class="select-none bg-blue shadow-lg hover:shadow-none
-            text-white font-bold py-1 px-4"
+          @click.prevent="onEditClick(memo.id)"
+          class="select-none bg-blue shadow-lg text-white font-bold
+            py-1 px-4 hover:shadow-none hover:opacity-90"
         >
           →
         </button>

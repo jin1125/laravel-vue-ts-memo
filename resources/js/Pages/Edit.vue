@@ -106,9 +106,9 @@ const onClickDestroy = () => {
       </div>
       <div class="text-center">
         <button
-          @click="onUpdateClick"
-          class="select-none bg-blue shadow-lg hover:shadow-none
-            text-white font-bold py-1 px-5 mt-5"
+          @click.prevent="onUpdateClick"
+          class="select-none bg-blue shadow-lg text-white font-bold
+            py-1 px-5 mt-5 hover:shadow-none hover:opacity-90"
           :class="[updateMemo.recentlySuccessful ? 'mb-2' : 'mb-12']"
         >
           Edit
@@ -124,16 +124,16 @@ const onClickDestroy = () => {
 
     <div class="grid grid-cols-2 justify-items-center">
       <button
-        @click="onClickBack"
-        class="select-none border border-blue shadow-lg hover:shadow-none
-          text-blue text-xs font-bold py-1 px-3"
+        @click.prevent="onClickBack"
+        class="select-none border border-blue shadow-lg text-blue text-xs
+          font-bold py-1 px-3 hover:shadow-none hover:opacity-90"
       >
         ← Back
       </button>
       <button
-        @click="onClickDestroy"
-        class="select-none border border-blue shadow-lg hover:shadow-none
-          text-blue text-xs font-bold py-1 px-3"
+        @click.prevent="onClickDestroy"
+        class="select-none border border-blue shadow-lg text-blue text-xs
+          font-bold py-1 px-3 hover:shadow-none hover:opacity-90"
       >
         Delete
       </button>
