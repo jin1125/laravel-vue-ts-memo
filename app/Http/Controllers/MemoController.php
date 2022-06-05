@@ -42,7 +42,8 @@ class MemoController extends Controller
     public function update(MemoRequest $request)
     {
         $memoId = (int) $request->input('id');
-        Memo::where('id', $memoId)->update([
+        $memo = Memo::where('id', $memoId)->firstOrFail();
+        $memo->update([
             'title'  => $request->input('title'),
             'status' => $request->input('status'),
             'detail' => $request->input('detail'),
@@ -50,5 +51,10 @@ class MemoController extends Controller
         ]);
 
         return redirect()->route('memo.edit', ['id' => $memoId]);
+    }
+
+    public function destroy()
+    {
+        return redirect()->route('memo.index');
     }
 }

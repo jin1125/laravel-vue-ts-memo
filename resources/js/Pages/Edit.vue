@@ -19,13 +19,15 @@ const updateMemo = useForm({
 })
 
 const onUpdateClick = () => {
-  updateMemo.post(route('memo.update'), {
-    onSuccess: () => updateMemo.reset()
-  })
+  updateMemo.post(route('memo.update'))
 }
 
 const onClickBack = () => {
   Inertia.get(route('memo.index'))
+}
+
+const onClickDestroy = () => {
+  Inertia.post(route('memo.destroy'))
 }
 </script>
 
@@ -124,7 +126,7 @@ const onClickBack = () => {
         ← Back
       </button>
       <button
-        @click=""
+        @click="onClickDestroy"
         class="border border-blue shadow-lg hover:shadow-none
           text-blue text-xs font-bold py-1 px-3"
       >
