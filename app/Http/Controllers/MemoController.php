@@ -41,7 +41,7 @@ class MemoController extends Controller
 
     public function update(MemoRequest $request)
     {
-        $memoId = $request->input('id');
+        $memoId = (int) $request->input('id');
         Memo::where('id', $memoId)->update([
             'title'  => $request->input('title'),
             'status' => $request->input('status'),

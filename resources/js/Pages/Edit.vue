@@ -35,7 +35,7 @@ const onClickBack = () => {
       w-2/5 min-w-80 mx-auto shadow-lg"
   >
     <div class="space-y-5">
-      <div class="text-center ">
+      <div class="text-center">
         <input
           type="text"
           v-model.trim="updateMemo.title"
@@ -46,6 +46,9 @@ const onClickBack = () => {
           name="title"
           id="title"
         >
+        <p class="font-bold text-red-500 text-sm">
+          {{ updateMemo.errors.title }}
+        </p>
       </div>
       <div class="grid grid-cols-3">
         <label for="status" class="text-blue text-xl font-bold col-span-1">
@@ -75,6 +78,9 @@ const onClickBack = () => {
           maxlength="100"
           name="detail" id="detail"
         ></textarea>
+        <p class="col-start-2 col-span-2 font-bold text-red-500 text-sm">
+          {{ updateMemo.errors.detail }}
+        </p>
       </div>
       <div class="grid grid-cols-3">
         <label for="limit" class="text-blue text-xl font-bold col-span-1">
@@ -87,6 +93,9 @@ const onClickBack = () => {
             text-sm font-bold py-1 px-2"
           :min="new Date().toISOString().split('T')[0]"
         >
+        <p class="col-start-2 col-span-2 font-bold text-red-500 text-sm">
+          {{ updateMemo.errors.limit }}
+        </p>
       </div>
       <div class="text-center">
         <button
