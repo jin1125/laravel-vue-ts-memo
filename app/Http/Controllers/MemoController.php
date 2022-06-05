@@ -9,11 +9,15 @@ use Inertia\Inertia;
 
 class MemoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $memos = Memo::all();
+        $successDestroy = $request->session()->get('successDestroy');
 
-        return Inertia::render('Index', ['memos' => $memos]);
+        return Inertia::render('Index', [
+            'memos' => $memos,
+            'successDestroy' => $successDestroy
+        ]);
     }
 
     public function create(MemoRequest $request)
@@ -56,9 +60,11 @@ class MemoController extends Controller
 
     public function destroy(Request $request)
     {
+
         $memoId = (int) $request->route('id');
         Memo::destroy($memoId);
 
-        return redirect()->route('memo.index');
+        $message = 'Delete successful';
+        return redirect()->route('memo.index')->with('successDestroy', $message);
     }
 }

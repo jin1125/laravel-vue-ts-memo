@@ -10,6 +10,11 @@ defineProps({
     type: Array as PropType<Memos[]>,
     default: () => [],
   },
+
+  successDestroy: {
+    type: String,
+    default: '',
+  },
 })
 
 const addMemo = useForm({
@@ -100,7 +105,7 @@ const onEditClick = (index: number) => {
           @click="onAddClick"
           class="bg-blue shadow-lg hover:shadow-none
             text-white font-bold py-1 px-5 mt-6"
-          :class="[addMemo.recentlySuccessful ? 'mb-4' : 'mb-16']"
+          :class="[addMemo.recentlySuccessful || successDestroy ? 'mb-4' : 'mb-16']"
         >
           Add
         </button>
@@ -109,6 +114,12 @@ const onEditClick = (index: number) => {
           class="font-bold mb-5 text-green-600 text-lg"
         >
           Add successful!
+        </p>
+        <p
+          v-if="successDestroy"
+          class="font-bold mb-5 text-green-600 text-lg"
+        >
+          {{ successDestroy }}
         </p>
       </div>
     </div>
