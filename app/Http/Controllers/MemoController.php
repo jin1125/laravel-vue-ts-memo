@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\MemoRequest;
 use App\Models\Memo;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class MemoController extends Controller
 {
@@ -23,10 +24,11 @@ class MemoController extends Controller
     public function create(MemoRequest $request)
     {
         Memo::create([
-            'title'  => $request->input('title'),
-            'status' => $request->input('status'),
-            'detail' => $request->input('detail'),
-            'limit'  => $request->input('limit'),
+            'title'   => $request->input('title'),
+            'status'  => $request->input('status'),
+            'detail'  => $request->input('detail'),
+            'limit'   => $request->input('limit'),
+            'user_id' => Auth::id(),
         ]);
 
         return redirect()->route('memo.index');
@@ -60,7 +62,6 @@ class MemoController extends Controller
 
     public function destroy(Request $request)
     {
-
         $memoId = (int) $request->route('id');
         Memo::destroy($memoId);
 

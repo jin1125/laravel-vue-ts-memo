@@ -15,5 +15,11 @@ class Memo extends Model
         'status',
         'detail',
         'limit',
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

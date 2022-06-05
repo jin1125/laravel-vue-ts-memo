@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { PropType } from 'vue'
 import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-vue3';
 import route from 'ziggy-js';
+import { Memos } from '../types/Memos'
 
 const props = defineProps({
   memo: {
-    type: Object,
+    type: Object as PropType<Memos>,
     default: () => {},
   },
 })

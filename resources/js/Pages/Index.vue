@@ -18,7 +18,6 @@ defineProps({
 })
 
 const addMemo = useForm({
-  id: undefined,
   title: '',
   status: 'incomplete',
   detail: '',
@@ -167,7 +166,7 @@ const onEditClick = (index: number) => {
           {{ memo.title }}
         </span>
         <button
-          @click="onEditClick(memo.id!)"
+          @click="onEditClick(memo.id)"
           class="bg-blue shadow-lg hover:shadow-none
             text-white font-bold py-1 px-4"
         >
