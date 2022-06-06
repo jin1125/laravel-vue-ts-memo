@@ -8,15 +8,14 @@ use App\Models\Memo;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
+use App\Services\GetMemoService;
+use App\Services\CreateMemoService;
 
 class MemoController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, GetMemoService $getMemoService)
     {
-        $sortOrder = 'DESC';
-        $memos = Memo::where('user_id', '=', Auth::id())
-            ->orderBy('id', $sortOrder)
-            ->get();
+        $memos = $getMemoService->execute();
 
         $successDestroy = $request->session()->get('successDestroy') ?? '';
 
@@ -26,15 +25,9 @@ class MemoController extends Controller
         ]);
     }
 
-    public function create(MemoRequest $request)
+    public function create(MemoRequest $request, CreateMemoService $createMemoService)
     {
-        Memo::create([
-            'title'   => $request->input('title'),
-            'status'  => $request->input('status'),
-            'detail'  => $request->input('detail'),
-            'limit'   => $request->input('limit'),
-            'user_id' => Auth::id(),
-        ]);
+        $createMemoService->execute($request);
 
         return redirect()->route('memo.index');
     }
