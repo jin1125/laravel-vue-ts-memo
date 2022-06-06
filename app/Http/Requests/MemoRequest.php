@@ -24,9 +24,9 @@ class MemoRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'   => 'required',
+            'title'   => 'required|max:20',
             'status'  => 'required',
-            'detail'  => 'required',
+            'detail'  => 'required|max:100',
             'limit'   => 'required',
         ];
     }
