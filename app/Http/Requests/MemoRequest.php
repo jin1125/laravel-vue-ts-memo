@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MemoRequest extends FormRequest
 {
@@ -23,11 +24,16 @@ class MemoRequest extends FormRequest
      */
     public function rules()
     {
+        $statusValue = ['incomplete' ,'working' ,'complete'];
+
         return [
             'title'   => 'required|max:20',
-            'status'  => 'required',
+            'status'  => [
+                'required',
+                Rule::in($statusValue)
+            ],
             'detail'  => 'required|max:100',
-            'limit'   => 'required',
+            'limit'   => 'required|date_format:Y-m-d',
         ];
     }
 }
