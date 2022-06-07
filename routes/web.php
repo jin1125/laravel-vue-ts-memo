@@ -17,9 +17,7 @@ use App\Http\Controllers;
 Route::get('/', fn () => Inertia::render('Welcome'))->name('welcome');
 
 Route::middleware([
-    'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified',
 ])->group(function () {
     Route::prefix('memo')->group(function () {
         Route::get('/', [Controllers\MemoController::class, 'index'])->name('memo.index');
