@@ -7,9 +7,10 @@ use App\Http\Requests\MemoRequest;
 use App\Models\Memo;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\Finder\Exception\AccessDeniedException;
 use App\Services\GetMemoService;
 use App\Services\CreateMemoService;
+use App\Services\UpdateMemoService;
+use App\Services\DestroyMemoService;
 
 class MemoController extends Controller
 {
@@ -45,39 +46,19 @@ class MemoController extends Controller
         return Inertia::render('Edit', ['memo' => $memo]);
     }
 
-    public function update(MemoRequest $request)
+    public function update(MemoRequest $request, UpdateMemoService $updateMemoService)
     {
-        $memoId = (int) $request->route('id');
-        $memo = Memo::where('id', $memoId)->firstOrFail();
-        $isOwnMemo = $memo->user_id === Auth::id();
-        if (!$isOwnMemo)
-        {
-            throw new AccessDeniedException();
-        }
-
-        $memo->update([
-            'title'  => $request->input('title'),
-            'status' => $request->input('status'),
-            'detail' => $request->input('detail'),
-            'limit'  => $request->input('limit'),
-        ]);
+        $memoId = $updateMemoService->execute($request);
 
         return redirect()->route('memo.edit', ['id' => $memoId]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, DestroyMemoService $destroyMemoService)
     {
-        $memoId = (int) $request->route('id');
-        $memo = Memo::where('id', $memoId)->firstOrFail();
-        $isOwnMemo = $memo->user_id === Auth::id();
-        if (!$isOwnMemo)
-        {
-            throw new AccessDeniedException();
-        }
-
-        Memo::destroy($memoId);
+        $destroyMemoService->execute($request);
 
         $message = 'Delete successful';
+
         return redirect()->route('memo.index')->with('successDestroy', $message);
     }
 }
