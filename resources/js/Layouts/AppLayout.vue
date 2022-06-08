@@ -12,13 +12,15 @@ defineProps({
 <template>
   <Head :title="title" />
 
-  <JetBanner />
+  <div class="min-h-screen relative pb-11 box-border">
+    <JetBanner />
 
-  <Header />
+    <Header />
 
-  <main>
-    <slot />
-  </main>
+    <main>
+      <slot />
+    </main>
 
-  <Footer />
+    <Footer class="absolute bottom-0" />
+  </div>
 </template>
