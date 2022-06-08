@@ -10,7 +10,7 @@ const registerUrl = route('register');
 <template>
   <Head title="Welcome" />
 
-  <div class="space-x-20 m-20 text-center">
+  <div class="space-x-20 mt-52 text-center">
     <Link
       v-if="$page.props.user"
       :href="dashboardUrl"
@@ -22,14 +22,14 @@ const registerUrl = route('register');
     <template v-else>
       <Link
         :href="loginUrl"
-        class="bg-blue text-white font-bold p-2 shadow-lg hover:shadow-none"
+        class="bg-blue text-white font-bold py-3 px-6 shadow-lg hover:shadow-none"
       >
         Log in
       </Link>
 
       <Link
         :href="registerUrl"
-        class="bg-blue text-white font-bold  p-2 shadow-lg hover:shadow-none"
+        class="bg-blue text-white font-bold py-3 px-6 shadow-lg hover:shadow-none"
       >
         Register
       </Link>
