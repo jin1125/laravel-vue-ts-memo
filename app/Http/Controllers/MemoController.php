@@ -16,6 +16,10 @@ class MemoController extends Controller
 {
     public function index(Request $request, GetMemoService $getMemoService)
     {
+        if (!Auth::check()) {
+            return redirect()->route('welcome');
+        }
+
         $memos = $getMemoService->execute();
 
         $successDestroy = $request->session()->get('successDestroy') ?? '';
