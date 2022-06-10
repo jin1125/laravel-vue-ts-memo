@@ -35,6 +35,7 @@ class CreateTest extends TestCase
         $this->actingAs($this->user)
             ->from('memo')
             ->post('memo/create', $newMemo)
+            ->assertValid(['title', 'detail', 'limit'])
             ->assertRedirect('memo');
     }
 }
