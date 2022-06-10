@@ -2,18 +2,35 @@
 
 namespace Tests\Feature\Memo;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class CreateTest extends TestCase
 {
     use RefreshDatabase;
-    
-    public function test_create_successed()
-    {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+    }
+
+
+    public function testCreatableNewlyMemo()
+    {
+        $newMemo = [
+            'title'  => 'aaaa',
+            'detail' => 'aaaa',
+            'limit'  => '2006-10-18',
+        ];
+
+        $this->actingAs($this->user)
+            ->from('memo')
+            ->post('memo/create', $newMemo)
+            ->assertRedirect('memo');
     }
 }

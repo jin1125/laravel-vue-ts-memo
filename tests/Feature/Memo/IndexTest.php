@@ -21,8 +21,8 @@ class IndexTest extends TestCase
         $user = User::factory()->create();
         $memos = Memo::factory()->create(['user_id' => 1]);
 
-        $this->actingAs($user);
-        $this->get(route('memo.index', $memos))
+        $this->actingAs($user)
+            ->get(route('memo.index', $memos))
             ->assertStatus(200)
             ->assertInertia(fn (AssertableInertia $page) => $page
             ->component('Index')
