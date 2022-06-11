@@ -46,8 +46,8 @@ class EditTest extends TestCase
         $memoIdExceptMe = mt_rand();
 
         $this->actingAs($this->user)
-            ->get("/memo/edit/$memoIdExceptMe")
-            ->assertStatus(302)
-            ->assertRedirect('/memo');
+             ->get("/memo/edit/$memoIdExceptMe")
+             ->assertStatus(302)
+             ->assertRedirect('/memo');
     }
 }
