@@ -23,6 +23,7 @@ class DestroyTest extends TestCase
     /**
      * メモの削除ができるか確認
      *
+     * @runInSeparateProcess
      * @return void
      */
     public function testCreatableNewlyMemo()
@@ -40,6 +41,7 @@ class DestroyTest extends TestCase
     /**
      * 自分のメモでなければ削除ができないか確認
      *
+     * @runInSeparateProcess
      * @return void
      */
     public function testUserMemoByWhenNoDeletingUnavailableIs()

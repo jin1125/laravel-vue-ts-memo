@@ -15,6 +15,7 @@ class IndexTest extends TestCase
     /**
      * ログインしていればIndexページに遷移できるか確認
      *
+     * @runInSeparateProcess
      * @return void
      */
     public function testLoginUserByIfIndexPageTransitionIs()
@@ -36,6 +37,7 @@ class IndexTest extends TestCase
     /**
      * 未ログインユーザーであればwelcomeページにリダイレクトするか確認
      *
+     * @runInSeparateProcess
      * @return void
      */
     public function testNonLoginUserByIfWelcomePageRedirectIs()

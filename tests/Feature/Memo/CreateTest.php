@@ -24,6 +24,7 @@ class CreateTest extends TestCase
     /**
      * 新規メモ投稿ができるか確認
      *
+     * @runInSeparateProcess
      * @return void
      */
     public function testCreatableNewlyMemo()
