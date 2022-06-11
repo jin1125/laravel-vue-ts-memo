@@ -23,11 +23,11 @@ class EditTest extends TestCase
         $this->user = User::factory()->create();
     }
 
+    /**
+     * Editページに遷移できるか確認
+     */
     public function testIsTransitionableEditPage()
     {
-        /**
-         * Editページに遷移できるか確認
-         */
         $userId = 1;
         $memos  = Memo::factory()->create(['user_id' => $userId]);
         $this->actingAs($this->user)
@@ -38,11 +38,11 @@ class EditTest extends TestCase
         );
     }
 
+    /**
+     * 自分のメモではないidを指定したらIndexページにリダイレクトするか
+     */
     public function testUserMemoNotIdByIfIndexPageToRedirectIs()
     {
-        /**
-         * 自分のメモではないidを指定したらIndexページにリダイレクトするか
-         */
         $memoIdExceptMe = mt_rand();
 
         $this->actingAs($this->user)

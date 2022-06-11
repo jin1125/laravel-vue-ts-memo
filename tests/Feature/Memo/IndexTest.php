@@ -12,11 +12,11 @@ class IndexTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * ログインしていればIndexページに遷移できるか確認
+     */
     public function testLoginUserByIfIndexPageTransitionIs()
     {
-        /**
-         * ログインしていればIndexページに遷移できるか確認
-         */
         $userId = 1;
         /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
         $user   = User::factory()->create();
@@ -31,11 +31,11 @@ class IndexTest extends TestCase
         );
     }
 
+    /**
+     * 未ログインユーザーであればwelcomeページにリダイレクトするか確認
+     */
     public function testNonLoginUserByIfWelcomePageRedirectIs()
     {
-        /**
-         * 未ログインユーザーであればwelcomeページにリダイレクトするか確認
-         */
         $this->get('/memo')
              ->assertStatus(302)
              ->assertRedirect('/');
