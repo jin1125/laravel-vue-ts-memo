@@ -25,6 +25,8 @@ class EditTest extends TestCase
 
     /**
      * Editページに遷移できるか確認
+     *
+     * @return void
      */
     public function testIsTransitionableEditPage()
     {
@@ -40,6 +42,8 @@ class EditTest extends TestCase
 
     /**
      * 自分のメモではないidを指定したらIndexページにリダイレクトするか
+     *
+     * @return void
      */
     public function testUserMemoNotIdByIfIndexPageToRedirectIs()
     {

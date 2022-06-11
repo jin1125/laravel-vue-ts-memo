@@ -24,11 +24,11 @@ class MemoController extends Controller
 
         $memos = $getMemoService->execute();
 
-        $successDestroy = $request->session()->get('successDestroy') ?? '';
+        $destroyMessage = $request->session()->get('destroyMessage') ?? '';
 
         return Inertia::render('Index', [
             'memos' => $memos,
-            'successDestroy' => $successDestroy
+            'destroyMessage' => $destroyMessage
         ]);
     }
 
@@ -70,6 +70,6 @@ class MemoController extends Controller
 
         $message = 'Delete successful';
 
-        return redirect()->route('memo.index')->with('successDestroy', $message);
+        return redirect()->route('memo.index')->with('destroyMessage', $message);
     }
 }

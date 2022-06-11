@@ -11,19 +11,43 @@ class DestroyTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = User::factory()->create();
+    }
+
     /**
      * メモの削除ができるか確認
+     *
+     * @return void
      */
     public function testCreatableNewlyMemo()
     {
         $userId = 1;
         $memoId = 1;
-        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
-        $user   = User::factory()->create();
         Memo::factory()->create(['user_id' => $userId]);
 
-        $this->actingAs($user)
+        $this->actingAs($this->user)
              ->post("/memo/destroy/$memoId")
-             ->assertRedirect('memo');;
+             ->assertRedirect('memo')
+             ->assertSessionHas('destroyMessage', 'Delete successful');
+    }
+
+    /**
+     * 自分のメモでなければ削除ができないか確認
+     *
+     * @return void
+     */
+    public function testUserMemoByWhenNoDeletingUnavailableIs()
+    {
+        $memoId = mt_rand();
+
+        $this->actingAs($this->user)
+             ->post("/memo/destroy/$memoId")
+             ->assertStatus(404);
     }
 }

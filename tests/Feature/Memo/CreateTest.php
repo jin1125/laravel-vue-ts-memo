@@ -23,6 +23,8 @@ class CreateTest extends TestCase
 
     /**
      * 新規メモ投稿ができるか確認
+     *
+     * @return void
      */
     public function testCreatableNewlyMemo()
     {

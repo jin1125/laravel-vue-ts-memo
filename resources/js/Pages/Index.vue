@@ -11,7 +11,7 @@ const props = defineProps({
     default: () => [],
   },
 
-  successDestroy: {
+  destroyMessage: {
     type: String,
     default: '',
   },
@@ -119,7 +119,7 @@ const onSortClick = () => {
           @click.prevent="onAddClick"
           class="select-none bg-blue shadow-lg text-white font-bold
             py-1 px-5 mt-6 hover:shadow-none hover:opacity-90"
-          :class="[addMemo.recentlySuccessful || successDestroy ? 'mb-4' : 'mb-16']"
+          :class="[addMemo.recentlySuccessful || destroyMessage ? 'mb-4' : 'mb-16']"
         >
           Add
         </button>
@@ -130,10 +130,10 @@ const onSortClick = () => {
           Add successful!
         </p>
         <p
-          v-if="successDestroy"
-          class="font-bold mb-5 text-green-600 text-lg"
+          v-if="destroyMessage"
+          class="font-bold mb-5 text-yellow-500 text-lg"
         >
-          {{ successDestroy }}
+          {{ destroyMessage }}
         </p>
       </div>
     </div>
