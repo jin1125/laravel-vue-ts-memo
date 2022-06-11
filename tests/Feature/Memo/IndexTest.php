@@ -15,17 +15,19 @@ class IndexTest extends TestCase
     public function testLoginUserByIfIndexPageTransitionIs()
     {
         /**
-         * ログインしていればIndexページに遷移するか確認
+         * ログインしていればIndexページに遷移できるか確認
          */
+        $userId = 1;
         /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
-        $user = User::factory()->create();
-        $memos = Memo::factory()->create(['user_id' => 1]);
+        $user   = User::factory()->create();
+        $userId = 1;
+        $memos  = Memo::factory()->create(['user_id' => $userId]);
 
         $this->actingAs($user)
-            ->get(route('memo.index', $memos))
-            ->assertStatus(200)
-            ->assertInertia(fn (AssertableInertia $page) => $page
-            ->component('Index')
+             ->get(route('memo.index', $memos))
+             ->assertStatus(200)
+             ->assertInertia(fn (AssertableInertia $page) => $page
+             ->component('Index')
         );
     }
 
@@ -35,7 +37,7 @@ class IndexTest extends TestCase
          * 未ログインユーザーであればwelcomeページにリダイレクトするか確認
          */
         $this->get('/memo')
-            ->assertStatus(302)
-            ->assertRedirect('/');
+             ->assertStatus(302)
+             ->assertRedirect('/');
     }
 }

@@ -14,6 +14,8 @@ use App\Services\DestroyMemoService;
 
 class MemoController extends Controller
 {
+    const FALSE_VALUE = 0;
+
     public function index(Request $request, GetMemoService $getMemoService)
     {
         if (!Auth::check()) {
@@ -39,10 +41,15 @@ class MemoController extends Controller
 
     public function edit($id)
     {
-        $memo = Memo::find($id);
-        $isOwnMemo = $memo->user_id === Auth::id();
 
-        if (!$memo || !$isOwnMemo)
+        $memo = Memo::find($id);
+        $userId = $memo->user_id ?? $this::FALSE_VALUE;
+        $isOwnMemo = false;
+        if ($userId) {
+            $isOwnMemo = $userId === Auth::id();
+        }
+
+        if (!$isOwnMemo)
         {
             return redirect()->route('memo.index');
         }
