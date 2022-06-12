@@ -47,9 +47,12 @@ class DestroyTest extends TestCase
      */
     public function testUserMemoByWhenNoDeletingUnavailableIs()
     {
-        $memoId = mt_rand();
+        $userId = 1;
+        $memoId = mt_rand(2, 1000);
+        Memo::factory()->create(['user_id' => $userId]);
 
         $this->actingAs($this->user)
+             ->from("/memo/edit/$memoId")
              ->post("/memo/destroy/$memoId")
              ->assertStatus(404);
     }
