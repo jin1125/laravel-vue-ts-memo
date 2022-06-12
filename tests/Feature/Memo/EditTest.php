@@ -14,7 +14,6 @@ class EditTest extends TestCase
     use RefreshDatabase;
 
     protected $user;
-    protected $memos;
 
     protected function setUp(): void
     {
@@ -33,6 +32,7 @@ class EditTest extends TestCase
     {
         $userId = 1;
         $memos  = Memo::factory()->create(['user_id' => $userId]);
+        
         $this->actingAs($this->user)
              ->get(route('memo.edit', $memos->id))
              ->assertStatus(200)

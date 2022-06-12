@@ -33,6 +33,7 @@ class DestroyTest extends TestCase
         Memo::factory()->create(['user_id' => $userId]);
 
         $this->actingAs($this->user)
+             ->from("/memo/edit/$memoId")
              ->post("/memo/destroy/$memoId")
              ->assertRedirect('memo')
              ->assertSessionHas('destroyMessage', 'Delete successful');
