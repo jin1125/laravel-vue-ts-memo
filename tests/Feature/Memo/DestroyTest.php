@@ -26,7 +26,7 @@ class DestroyTest extends TestCase
      * @runInSeparateProcess
      * @return void
      */
-    public function testCreatableNewlyMemo()
+    public function testMemoDeletingIsPossibleTo()
     {
         $userId = 1;
         $memoId = 1;
