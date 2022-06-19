@@ -19,11 +19,11 @@ Route::get('/', fn () => Inertia::render('Welcome'))->name('welcome');
 Route::middleware([
     config('jetstream.auth_session'),
 ])->group(function () {
-    Route::prefix('memo')->group(function () {
-        Route::get('/', [Controllers\MemoController::class, 'index'])->name('memo.index');
-        Route::post('create', [Controllers\MemoController::class, 'create'])->name('memo.create');
-        Route::get('edit/{id}', [Controllers\MemoController::class, 'edit'])->name('memo.edit');
-        Route::post('update/{id}', [Controllers\MemoController::class, 'update'])->name('memo.update');
-        Route::post('destroy/{id}', [Controllers\MemoController::class, 'destroy'])->name('memo.destroy');
+    Route::prefix('memo')->controller(Controllers\MemoController::class)->group(function () {
+        Route::get('/', 'index')->name('memo.index');
+        Route::post('create', 'create')->name('memo.create');
+        Route::get('edit/{id}', 'edit')->name('memo.edit');
+        Route::post('update/{id}', 'update')->name('memo.update');
+        Route::post('destroy/{id}', 'destroy')->name('memo.destroy');
     });
 });
